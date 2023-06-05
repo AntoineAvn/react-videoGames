@@ -1,0 +1,9 @@
+.btn-showMore{
+    background-color: #A970FF !important;
+    border-color: #A970FF !important;
+}
+
+.btn-showMore:hover{
+    background-color: #5c3e8a !important;
+    border-color: #5c3e8a !important;
+}
