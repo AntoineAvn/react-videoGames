@@ -53,7 +53,7 @@ const Home = () => {
       <h1 className="text-center m-5">Les jeux du moment :</h1>
       <div className="text-end mb-4">
         <label htmlFor="sort">Trier par :</label>
-        <select id="sort" value={sort} onChange={handleSortChange}>
+        <select id="sort" value={sort} onChange={handleSortChange} className='m-2'>
           <option value="">Aucun</option>
           <option value="name">A - Z</option>
           <option value="-name">Z - A</option>
