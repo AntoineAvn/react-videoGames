@@ -63,22 +63,23 @@ const getPlatformLogo = (platform) => {
 };
 
 const GameCard = ({ game }) => {
-  console.log(game);
   const platformImages = game.parent_platforms ? getPlatformImages(game.parent_platforms) : new Set();
   const logo = game.parent_platforms ? webLogo : getPlatformLogo('web');
 
   return (
     <div className="card">
-      <div className='card-image' data-content={`Date de sortie : ${game.released}, Note : ${game.rating}`}>
-        <img
-          src={game.background_image}
-          className="card-img-top"
-          alt={game.name}
-          style={{ height: '200px', objectFit: 'cover' }}
-        />
-      </div>
+      <Link to={`/game/${game.id}`}>
+        <div className='card-image' data-content={`Date de sortie : ${game.released}, Note : ${game.rating}`}>
+          <img
+            src={game.background_image}
+            className="card-img-top"
+            alt={game.name}
+            style={{ height: '200px', objectFit: 'cover' }}
+          />
+        </div>
+      </Link>
       <div className="card-body">
-        <h5 className="card-title"><Link to={`/game/${game.id}`}>{game.name}</Link></h5>
+        <h5 className="card-title">{game.name}</h5>
         {game.parent_platforms && (
           <p className="card-text">
             {Array.from(platformImages).map((platform, index) => (
