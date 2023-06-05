@@ -69,7 +69,7 @@ const Home = () => {
         ))}
       </div>
       {hasNextPage && (
-        <div className="text-center mt-4">
+        <div className="text-center mt-5">
           <button className="btn btn-primary btn-showMore" onClick={loadMoreGames}>
             Afficher plus
           </button>
