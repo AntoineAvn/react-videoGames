@@ -1,0 +1,13 @@
+.game-detail div img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.game-detail div .title{
+    color: #A970FF;
+}
+
+.game-detail div {
+    margin: 50px;
+}

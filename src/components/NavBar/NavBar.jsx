@@ -12,7 +12,7 @@ function NavBar(){
           <div>
               <Link to="/"><button className="btn">Home</button></Link>
               <Link to="/search"><button className="btn">Recherche</button></Link>
-              <Link to="/history"><button className="btn">Profil</button></Link>
+              <Link to="/profil"><button className="btn">Profil</button></Link>
           </div>
       </div>
   );
