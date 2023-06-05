@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import GameCard from '../GameCard/GameCard';
+import BadgeImage from '../../assets/images/badge.svg';
+import './Profil.css';
 
 const Profile = () => {
   const [favoriteGames, setFavoriteGames] = useState([]);
@@ -51,7 +53,8 @@ const Profile = () => {
         ))}
       </div>
       <h3 className="text-center m-5">
-        {hasBadge ? 'Ma liste de jeux terminés (badge +10 jeux) :' : 'Ma liste de jeux terminés :'}
+      {hasBadge && <img src={BadgeImage} alt="Badge +10 jeux" className='img-badge'/>}
+      {hasBadge ? 'Ma liste de jeux terminés:' : 'Ma liste de jeux terminés :'}
       </h3>
       <div className="game-card-container card-deck row justify-content-center">
         {completedGames.map((game) => (
