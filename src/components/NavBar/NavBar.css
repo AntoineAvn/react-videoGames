@@ -16,6 +16,16 @@
     align-items: center;
 }
 
+.link-banniere{
+    text-decoration: none;
+    color: #A970FF;
+}
+
+.link-banniere:hover{
+    text-decoration: none;
+    color: #A970FF;
+}
+
 .banniere img {
     width: 50px;
     height: 50px;

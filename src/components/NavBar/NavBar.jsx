@@ -5,10 +5,12 @@ import './NavBar.css';
 function NavBar(){
   return (
       <div className="banniere">
-          <div>
-              <img src={logo} className="img_logo" alt="logo" />
-              <h1 className="titre">GameShow</h1>
-          </div>
+         <Link to="/" className='link-banniere'>
+            <div>
+                <img src={logo} className="img_logo" alt="logo" />
+                <h1 className="titre">GameShow</h1>
+            </div>
+          </Link>
           <div>
               <Link to="/"><button className="btn">Home</button></Link>
               <Link to="/search"><button className="btn">Recherche</button></Link>
