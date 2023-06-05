@@ -77,8 +77,8 @@ const GameDetail = () => {
         <h3>Synopsis :</h3>
         <p>{description_raw}</p>
       </div>
-      <div className='d-flex justify-content-between'>
-        <div className='w-25'>
+      <div className='d-flex justify-content-between game-info'>
+        <div className='w-100'>
           <p>Date de sortie : {released}</p>
           <p>Développeurs : {developers && developers.map(developer => developer.name).join(', ')}</p>
           <p>Genres : {genres && genres.map(genre => genre.name).join(', ')}</p>
