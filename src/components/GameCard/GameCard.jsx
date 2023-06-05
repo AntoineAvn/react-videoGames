@@ -69,7 +69,7 @@ const GameCard = ({ game }) => {
 
   return (
     <div className="card">
-      <div className='card-image' data-content={`Date de sortie : ${game.released}, Développeurs : ${game.developers}, Note : ${game.rating}`}>
+      <div className='card-image' data-content={`Date de sortie : ${game.released}, Note : ${game.rating}`}>
         <img
           src={game.background_image}
           className="card-img-top"
