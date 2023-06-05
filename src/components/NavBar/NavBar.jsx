@@ -12,9 +12,9 @@ function NavBar(){
             </div>
           </Link>
           <div>
-              <Link to="/"><button className="btn">Home</button></Link>
-              <Link to="/search"><button className="btn">Recherche</button></Link>
-              <Link to="/profil"><button className="btn">Profil</button></Link>
+              <Link to="/" className='btn-nav'><button className="btn">Home</button></Link>
+              <Link to="/search" className='btn-nav'><button className="btn">Recherche</button></Link>
+              <Link to="/profil" className='btn-nav'><button className="btn">Profil</button></Link>
           </div>
       </div>
   );

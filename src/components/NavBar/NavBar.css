@@ -36,3 +36,7 @@
     color: #f9f9f9;
     margin-left: 10px;
 }
+
+.btn-nav:hover{
+    color: #A970FF !important;
+}
