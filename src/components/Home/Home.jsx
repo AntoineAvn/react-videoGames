@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import GameCard from '../GameCard/GameCard';
+import './Home.css';
 
 const Home = () => {
   const [games, setGames] = useState([]);
@@ -69,7 +70,7 @@ const Home = () => {
       </div>
       {hasNextPage && (
         <div className="text-center mt-4">
-          <button className="btn btn-primary" onClick={loadMoreGames}>
+          <button className="btn btn-primary btn-showMore" onClick={loadMoreGames}>
             Afficher plus
           </button>
         </div>
