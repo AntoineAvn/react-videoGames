@@ -11,3 +11,43 @@
 .game-detail div {
     margin: 50px;
 }
+
+.heart-icon {
+    margin-left: 5px;
+    color: white; /* Couleur par défaut */
+  }
+  
+  .favorite-label.red .heart-icon {
+    color: red; /* Couleur lorsque le jeu est ajouté aux favoris */
+  }
+  
+  .favorite-label {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #A970FF;
+    border: 1px solid #ffffff75;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .favorite-label:hover {
+    color: white;
+    background-color: #5c3e8a;
+  }
+
+  .completed-label{
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #A970FF;
+    border: 1px solid #ffffff75;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .completed-label:hover {
+    color: white;
+    background-color: #5c3e8a;
+  }
+  

@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import './GameDetail.css';
 
 const GameDetail = () => {
   const { id } = useParams();
   const [game, setGame] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavoriteIconRed, setIsFavoriteIconRed] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
     const apiKey = import.meta.env.VITE_API_KEY;
 
-    axios.get(`https://api.rawg.io/api/games/${id}?key=${apiKey}`)
-      .then(response => {
+    axios
+      .get(`https://api.rawg.io/api/games/${id}?key=${apiKey}`)
+      .then((response) => {
         setGame(response.data);
         console.log(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('Error fetching game:', error);
       });
   }, [id]);
@@ -35,7 +39,8 @@ const GameDetail = () => {
   }, [game, id]);
 
   const toggleFavorite = () => {
-    setIsFavorite(prevFavorite => !prevFavorite);
+    setIsFavorite((prevFavorite) => !prevFavorite);
+    setIsFavoriteIconRed((prevIconRed) => !prevIconRed);
 
     if (!isFavorite) {
       localStorage.setItem(`favorite_${id}`, id);
@@ -73,7 +78,7 @@ const GameDetail = () => {
         <p>{description_raw}</p>
       </div>
       <div className='d-flex justify-content-between'>
-        <div>
+        <div className='w-50'>
           <p>Date de sortie : {released}</p>
           <p>Développeurs : {developers && developers.map(developer => developer.name).join(', ')}</p>
           <p>Genres : {genres && genres.map(genre => genre.name).join(', ')}</p>
@@ -81,14 +86,17 @@ const GameDetail = () => {
         </div>
         <div>
           <label>
-            <input type="checkbox" checked={isFavorite} onChange={toggleFavorite} />
-            {isFavorite ? "Supprimer des favoris" : "Ajouter aux favoris"}
+            <span className={`favorite-label ${isFavorite ? 'red' : ''}`} onClick={toggleFavorite}>
+              {isFavorite ? 'Supprimer des favoris' : 'Ajouter aux favoris'}
+              <FontAwesomeIcon icon={faHeart} className={`heart-icon ${isFavoriteIconRed ? 'red' : ''}`} />
+            </span>
           </label>
         </div>
         <div>
-          <label>
-            <input type="checkbox" checked={isCompleted} onChange={toggleCompleted} disabled={isCompleted} />
-            {isCompleted ? "Jeux terminé" : "Ajouter à la liste des jeux terminés"}
+          <label className="completed-label">
+            <span className={isCompleted ? 'completed-text' : ''} onClick={toggleCompleted}>
+              {isCompleted ? <del>Jeu terminé</del> : 'Ajouter à la liste des jeux terminés'}
+            </span>
           </label>
         </div>
       </div>
