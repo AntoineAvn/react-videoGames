@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import xboxLogo from '../../assets/images/xboxLogo.svg';
 import playstationLogo from '../../assets/images/playstationLogo.svg';
 import nintendoLogo from '../../assets/images/nintendoLogo.svg';
 import pcLogo from '../../assets/images/pcLogo.svg';
 import macosLogo from '../../assets/images/macosLogo.svg';
+import webLogo from '../../assets/images/webLogo.svg';
 import './GameCard.css';
 
 const getPlatformImages = (platforms) => {
@@ -15,6 +17,7 @@ const getPlatformImages = (platforms) => {
   const nintendoRegex = /nintendo/i;
   const pcRegex = /pc/i;
   const macosRegex = /apple/i;
+  const web = /web/i;
 
   platformNames.forEach((name) => {
     if (xboxRegex.test(name)) {
@@ -31,6 +34,9 @@ const getPlatformImages = (platforms) => {
     }
     if (macosRegex.test(name)) {
       platformImages.add('apple');
+    }
+    if (web.test(name)) {
+      platformImages.add('web');
     }
   });
 
@@ -49,37 +55,49 @@ const getPlatformLogo = (platform) => {
       return pcLogo;
     case 'apple':
       return macosLogo;
+    case 'web':
+      return webLogo;
     default:
       return null;
   }
 };
 
 const GameCard = ({ game }) => {
-  const platformImages = getPlatformImages(game.parent_platforms);
-console.log(game);
+  console.log(game);
+  const platformImages = game.parent_platforms ? getPlatformImages(game.parent_platforms) : new Set();
+  const logo = game.parent_platforms ? webLogo : getPlatformLogo('web');
+
   return (
     <div className="card">
-        <div className='card-image' data-content={`Date de sortie : ${game.released}, Développeurs : ${game.developers}, Note : ${game.rating}`}>
-            <img
-            src={game.background_image}
-            className="card-img-top"
-            alt={game.name}
-            style={{ height: '200px', objectFit: 'cover' }}/>
-        </div>
+      <div className='card-image' data-content={`Date de sortie : ${game.released}, Développeurs : ${game.developers}, Note : ${game.rating}`}>
+        <img
+          src={game.background_image}
+          className="card-img-top"
+          alt={game.name}
+          style={{ height: '200px', objectFit: 'cover' }}
+        />
+      </div>
       <div className="card-body">
-        <h5 className="card-title">{game.name}</h5>
-        <p className="card-text">
-          {Array.from(platformImages).map((platform, index) => (
-            <img
-              key={index}
-              src={getPlatformLogo(platform)}
-              alt={platform}
-              width="20"
-              height="20"
-              style={{ marginRight: '5px' }}
-            />
-          ))}
-        </p>
+        <h5 className="card-title"><Link to={`/game/${game.id}`}>{game.name}</Link></h5>
+        {game.parent_platforms && (
+          <p className="card-text">
+            {Array.from(platformImages).map((platform, index) => (
+              <img
+                key={index}
+                src={getPlatformLogo(platform)}
+                alt={platform}
+                width="20"
+                height="20"
+                style={{ marginRight: '5px' }}
+              />
+            ))}
+          </p>
+        )}
+        {!game.parent_platforms && (
+          <p className="card-text">
+            <img src={logo} alt="web" width="20" height="20" style={{ marginRight: '5px' }} />
+          </p>
+        )}
       </div>
     </div>
   );
