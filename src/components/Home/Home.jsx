@@ -51,7 +51,7 @@ const Home = () => {
   return (
     <div className="app container">
       <h1 className="text-center m-5">Les jeux du moment :</h1>
-      <div className="text-center mb-4">
+      <div className="text-end mb-4">
         <label htmlFor="sort">Trier par :</label>
         <select id="sort" value={sort} onChange={handleSortChange}>
           <option value="">Aucun</option>
