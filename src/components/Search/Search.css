@@ -1,3 +1,12 @@
 .container{
     min-height: 70vh;
 }
+
+.search-input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ffffff75;
+    background-color: #0e0e10;
+    color: #f9f9f9;
+}

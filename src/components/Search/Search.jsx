@@ -33,7 +33,7 @@ const Search = () => {
     <div className="container">
       <h1 className="text-center m-5">Recherche de jeux</h1>
       <div className="text-center mb-4">
-        <input
+        <input className='search-input'
           type="text"
           placeholder="Rechercher un jeu"
           value={searchTerm}
